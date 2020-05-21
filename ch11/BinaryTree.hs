@@ -1,6 +1,7 @@
 module BinaryTree
     (
     BinaryTree (..)
+    insert'
     ) where
         
 data BinaryTree a =

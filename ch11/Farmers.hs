@@ -28,4 +28,4 @@ isDairyFarmerRec :: FarmerRec -> Bool
 isDairyFarmerRec farmer = 
     case fType farmer of 
          DairyFarmer -> True
-         _           -> False
+        _           -> False

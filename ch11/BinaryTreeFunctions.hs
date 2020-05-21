@@ -4,31 +4,16 @@ module BinaryTreeFunctions
    , preOrder
    , inOrder
    , postOrder
+   , sumTree
+   , foldTree
     ) where
 
 import BinaryTree (BinaryTree(..))
-
 
 mapTree :: (a -> b) -> BinaryTree a -> BinaryTree b 
 mapTree _ Leaf = Leaf
 mapTree f (Node left a right) = 
   Node (mapTree f left) (f a) (mapTree f right)
-
-testTree' :: BinaryTree Integer
-testTree' = 
-  Node (Node Leaf 3 Leaf)
-       1
-       (Node Leaf 4 Leaf)
-
-mapExpected = 
-  Node (Node Leaf 5 Leaf)
-       3 
-       (Node Leaf 6 Leaf) 
-
-mapOkay = 
-  if mapTree (+2) testTree' == mapExpected
-  then print "yup okay!"
-  else error "test failed!"
 
 preOrder :: BinaryTree a -> [a]
 preOrder Leaf = []
@@ -72,3 +57,19 @@ testInorder =
     if inOrder testTree == [1, 2, 3]
     then putStrLn "Inorder fine!"
     else putStrLn "Bad news bears."
+
+testTree' :: BinaryTree Integer
+testTree' = 
+  Node (Node Leaf 3 Leaf)
+       1
+       (Node Leaf 4 Leaf)
+
+mapExpected = 
+  Node (Node Leaf 5 Leaf)
+       3 
+       (Node Leaf 6 Leaf) 
+
+mapOkay = 
+  if mapTree (+2) testTree' == mapExpected
+  then print "yup okay!"
+  else error "test failed!"
